@@ -2,6 +2,8 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Pet {
     @Id
@@ -13,9 +15,8 @@ public class Pet {
     @JoinColumn(name = "owner_id")
     private Owner ownerId;
     private String breed;
-    @OneToMany
-    @JoinColumn(name = "appointment_id")
-    private Appointment appointmentID;
+    @OneToMany(mappedBy = "pet")
+    private List<Appointment> appointmentList;
 
 
     public Integer getPetId() {
@@ -58,23 +59,24 @@ public class Pet {
         this.breed = breed;
     }
 
-    public Appointment getAppointmentID() {
-        return appointmentID;
+    public List<Appointment> getAppointmentList() {
+        return appointmentList;
     }
 
-    public void setAppointmentID(Appointment appointmentID) {
-        this.appointmentID = appointmentID;
+    public void setAppointmentList(List<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
     }
 
     @Override
     public String toString() {
-        return "Pet{" +
-                "petId=" + petId +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", ownerId=" + ownerId +
-                ", breed='" + breed + '\'' +
-                ", appointmentID=" + appointmentID +
-                '}';
+        final StringBuilder sb = new StringBuilder("Pet{");
+        sb.append("petId=").append(petId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", breed='").append(breed).append('\'');
+        sb.append(", appointmentList=").append(appointmentList);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -10,8 +10,7 @@ public class Veterinarian {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany
-    @JoinColumn(name = "appointments")
+    @OneToMany(mappedBy = "veterinarian")
     private List<Appointment> appointments;
     private Integer phoneNumber;
 

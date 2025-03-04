@@ -11,10 +11,10 @@ public class Appointment {
     private LocalDateTime date;
     @ManyToOne
     @JoinColumn(name= "pet_id")
-    private int petId;
+    private Pet petId;
     @ManyToOne
     @JoinColumn(name = "veterinarian_id")
-    private int veterinarianId;
+    private Veterinarian veterinarianId;
 
     public Integer getId() {
         return id;
@@ -32,19 +32,19 @@ public class Appointment {
         this.date = date;
     }
 
-    public int getPetId() {
+    public Pet getPetId() {
         return petId;
     }
 
-    public void setPetId(int petId) {
+    public void setPetId(Pet petId) {
         this.petId = petId;
     }
 
-    public int getVeterinarianId() {
+    public Veterinarian getVeterinarianId() {
         return veterinarianId;
     }
 
-    public void setVeterinarianId(int veterinarianId) {
+    public void setVeterinarianId(Veterinarian veterinarianId) {
         this.veterinarianId = veterinarianId;
     }
 
