@@ -13,11 +13,10 @@ public class Pet {
     private Integer age;
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private Owner ownerId;
+    private Owner owner;
     private String breed;
     @OneToMany(mappedBy = "pet")
     private List<Appointment> appointmentList;
-
 
     public Integer getPetId() {
         return petId;
@@ -43,12 +42,12 @@ public class Pet {
         this.age = age;
     }
 
-    public Owner getOwnerId() {
-        return ownerId;
+    public Owner getOwner() {
+        return owner;
     }
 
-    public void setOwnerId(Owner ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public String getBreed() {
@@ -73,7 +72,7 @@ public class Pet {
         sb.append("petId=").append(petId);
         sb.append(", name='").append(name).append('\'');
         sb.append(", age=").append(age);
-        sb.append(", ownerId=").append(ownerId);
+        sb.append(", owner=").append(owner);
         sb.append(", breed='").append(breed).append('\'');
         sb.append(", appointmentList=").append(appointmentList);
         sb.append('}');

@@ -3,6 +3,7 @@ package org.example.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+
 @Entity
 public class Appointment {
     @Id
@@ -11,10 +12,10 @@ public class Appointment {
     private LocalDateTime date;
     @ManyToOne
     @JoinColumn(name= "pet_id")
-    private Pet petId;
+    private Pet pet;
     @ManyToOne
     @JoinColumn(name = "veterinarian_id")
-    private Veterinarian veterinarianId;
+    private Veterinarian veterinarian;
 
     public Integer getId() {
         return id;
@@ -32,20 +33,20 @@ public class Appointment {
         this.date = date;
     }
 
-    public Pet getPetId() {
-        return petId;
+    public Pet getPet() {
+        return pet;
     }
 
-    public void setPetId(Pet petId) {
-        this.petId = petId;
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
-    public Veterinarian getVeterinarianId() {
-        return veterinarianId;
+    public Veterinarian getVeterinarian() {
+        return veterinarian;
     }
 
-    public void setVeterinarianId(Veterinarian veterinarianId) {
-        this.veterinarianId = veterinarianId;
+    public void setVeterinarian(Veterinarian veterinarian) {
+        this.veterinarian = veterinarian;
     }
 
     @Override
@@ -53,8 +54,8 @@ public class Appointment {
         return "Appointment{" +
                 "id=" + id +
                 ", date=" + date +
-                ", petId=" + petId +
-                ", veterinarianId=" + veterinarianId +
+                ", petId=" + pet +
+                ", veterinarian=" + veterinarian +
                 '}';
     }
 }
