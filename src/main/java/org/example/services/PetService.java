@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Scanner;
-
+//
 public class PetService {
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
     public void registerPet() {

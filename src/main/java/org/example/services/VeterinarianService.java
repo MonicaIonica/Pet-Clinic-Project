@@ -1,5 +1,5 @@
 package org.example.services;
-
+//
 import org.example.configs.HibernateUtils;
 import org.hibernate.SessionFactory;
 

@@ -1,5 +1,5 @@
 package org.example.entities;
-
+//
 import jakarta.persistence.*;
 
 import java.util.List;

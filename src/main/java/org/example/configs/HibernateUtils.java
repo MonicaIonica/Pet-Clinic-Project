@@ -1,5 +1,5 @@
 package org.example.configs;
-
+//
 import org.example.entities.Appointment;
 import org.example.entities.Owner;
 import org.example.entities.Pet;
