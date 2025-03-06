@@ -40,6 +40,15 @@ public class OwnerService {
         session.close();
         return owner;
     }
-
-
+    public void displayAllOwners(){
+        Session session = sessionFactory.openSession();
+        Query<Owner> query = session.createQuery("SELECT o FROM Owner o");
+        List<Owner> owners = query.list();
+        for (Owner owner : owners){
+            System.out.println(owner);
+        }
+        session.close();
+    }
 }
+
+
