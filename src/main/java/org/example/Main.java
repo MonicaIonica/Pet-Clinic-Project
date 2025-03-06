@@ -5,6 +5,7 @@ import org.example.configs.InvalidMismatchException;
 import org.example.services.AppointmentService;
 import org.example.services.OwnerService;
 import org.example.services.PetService;
+import org.example.services.VeterinarianService;
 
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ public class Main {
         PetService petService = new PetService();
         OwnerService ownerService = new OwnerService();
         AppointmentService appointmentService = new AppointmentService();
+        VeterinarianService veterinarianService = new VeterinarianService();
 
         Scanner input = new Scanner(System.in);
         int number;
@@ -60,11 +62,20 @@ public class Main {
                         System.out.println(e.getMessage());
                     }
                     break;
+                case 7:
+                    veterinarianService.displayAllVeterinarians();
             }
-
 
         }  while (number != 0) ;
     }
 }
+
+
+
+
+
+
+
+
 
 

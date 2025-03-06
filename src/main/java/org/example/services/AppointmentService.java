@@ -34,8 +34,6 @@ public class AppointmentService {
             throw new InvalidFormatException("Invalid format");
         }
 
-
-
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
@@ -49,29 +47,20 @@ public class AppointmentService {
             }
             e.printStackTrace();
         }
-
-
-
     }
 
     public void displayAllAppointents() throws InvalidMismatchException {
 
-            Session session = sessionFactory.openSession();
-            Query<Appointment> query = session.createQuery("SELECT a FROM Appointment a");
-            List<Appointment> appointments = query.list();
-            if(appointments.size() == 0) {
-                throw new InvalidMismatchException("No appointments");
-            }else {
-                for (Appointment appointment : appointments) {
-                    System.out.println(appointment);
-                }
+        Session session = sessionFactory.openSession();
+        Query<Appointment> query = session.createQuery("SELECT a FROM Appointment a");
+        List<Appointment> appointments = query.list();
+        if(appointments.size() == 0) {
+            throw new InvalidMismatchException("No appointments");
+        }else {
+            for (Appointment appointment : appointments) {
+                System.out.println(appointment);
             }
-            session.close();
-
         }
+        session.close();
     }
-
-
-
-
-
+}
