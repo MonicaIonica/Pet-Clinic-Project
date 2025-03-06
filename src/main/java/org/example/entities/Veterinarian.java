@@ -51,7 +51,7 @@ public class Veterinarian {
         return "Veterinarian{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", appointments=" + appointments +
+                //", appointments=" + appointments +
                 ", phoneNumber=" + phoneNumber +
                 '}';
     }

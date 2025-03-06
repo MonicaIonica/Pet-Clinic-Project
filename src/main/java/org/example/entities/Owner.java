@@ -62,7 +62,7 @@ public class Owner {
         sb.append(", name='").append(name).append('\'');
         sb.append(", adress='").append(adress).append('\'');
         sb.append(", phoneNumber=").append(phoneNumber);
-        sb.append(", petList=").append(petList);
+        //sb.append(", petList=").append(petList);
         sb.append('}');
         return sb.toString();
     }

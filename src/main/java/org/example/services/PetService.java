@@ -39,13 +39,13 @@ public class PetService {
     }
 
     public void displayAllPets(){
-        try(Session session = sessionFactory.openSession()){
-            Query<Pet> query = session.createQuery("SELECT p FROM Pet p", Pet.class);
+        Session session = sessionFactory.openSession();
+            Query<Pet> query = session.createQuery("SELECT p FROM Pet p");
             List<Pet> pets = query.list();
             for (Pet pet : pets){
                 System.out.println(pet);
             }
+            session.close();
         }
     }
 
-}

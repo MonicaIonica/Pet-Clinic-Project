@@ -74,7 +74,7 @@ public class Pet {
         sb.append(", age=").append(age);
         sb.append(", owner=").append(owner);
         sb.append(", breed='").append(breed).append('\'');
-        sb.append(", appointmentList=").append(appointmentList);
+        //sb.append(", appointmentList=").append(appointmentList);
         sb.append('}');
         return sb.toString();
     }

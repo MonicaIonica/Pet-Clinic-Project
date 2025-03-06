@@ -36,10 +36,13 @@ public class Main {
                break;
            case 1:
                petService.registerPet();
+               break;
            case 2:
                petService.displayAllPets();
+               break;
            case 3:
                ownerService.registerOwner();
+               break;
            case 5:
                try {
                    appointmentService.registerAppointment();
