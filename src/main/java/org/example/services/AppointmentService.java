@@ -4,6 +4,7 @@ import org.example.configs.HibernateUtils;
 import org.example.configs.InvalidFormatException;
 import org.example.configs.InvalidMismatchException;
 import org.example.entities.Appointment;
+import org.example.entities.Veterinarian;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -34,9 +35,18 @@ public class AppointmentService {
         }
 
         Transaction transaction = null;
+        System.out.println("Type the name of the veterinarian:");
+        String vetName = scanner.nextLine();
 
-        VeterinarianService veterinarianService = new VeterinarianService();
-        appointment.setVeterinarian(veterinarianService.registerVeterinarian());
+        Session vetSession = sessionFactory.openSession();
+        Query<Veterinarian> selectVet = vetSession.createQuery("SELECT v FROM Veterinarian v WHERE name= :nameVet");
+        selectVet.setParameter("nameVet",vetName);
+        Veterinarian veterinarian = selectVet.getSingleResult();
+
+        if( veterinarian.getName() != null){
+            appointment.setVeterinarian(selectVet.getSingleResult());
+        }
+        else System.out.println( "Veterinarian not found.");
 
         PetService petService = new PetService();
         appointment.setPet(petService.registerPet());
