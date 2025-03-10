@@ -1,5 +1,7 @@
 package org.example.services;
 //
+import org.example.Repository.AppointmentRepository;
+import org.example.Repository.VeterinarianRepository;
 import org.example.configs.HibernateUtils;
 import org.example.configs.InvalidFormatException;
 import org.example.configs.InvalidMismatchException;
@@ -34,35 +36,21 @@ public class AppointmentService {
             throw new InvalidFormatException("Invalid format");
         }
 
-        Transaction transaction = null;
+
         System.out.println("Type the name of the veterinarian:");
         String vetName = scanner.nextLine();
 
-        Session vetSession = sessionFactory.openSession();
-        Query<Veterinarian> selectVet = vetSession.createQuery("SELECT v FROM Veterinarian v WHERE name= :nameVet");
-        selectVet.setParameter("nameVet",vetName);
-        Veterinarian veterinarian = selectVet.getSingleResult();
+        VeterinarianRepository vetRep = new VeterinarianRepository();
+        appointment.setVeterinarian(vetRep.getVetByName(vetName));
 
-        if( veterinarian.getName() != null){
-            appointment.setVeterinarian(selectVet.getSingleResult());
-        }
-        else System.out.println( "Veterinarian not found.");
+
+
 
         PetService petService = new PetService();
         appointment.setPet(petService.registerPet());
 
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
-            session.save(appointment);
-            transaction.commit();
-
-            System.out.println("Appointment registered successfully:\n " + appointment);
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
+        AppointmentRepository appRep =  new AppointmentRepository();
+        appRep.saveAppointment(appointment);
     }
 
     public void displayAllAppointments() throws InvalidMismatchException {
