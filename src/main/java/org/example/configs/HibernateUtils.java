@@ -17,7 +17,7 @@ public class HibernateUtils {
                     .setProperty(Environment.DRIVER, "com.mysql.cj.jdbc.Driver")
                     .setProperty(Environment.URL, "jdbc:mysql://localhost:3306/pet_clinic")
                     .setProperty(Environment.USER, "root")
-                    .setProperty(Environment.PASS, "dement98")
+                    .setProperty(Environment.PASS, "sda123")
                     .setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect")
                     .setProperty(Environment.HBM2DDL_AUTO, "update")
                     .setProperty(Environment.SHOW_SQL, "true")

@@ -1,6 +1,7 @@
 package org.example.services;
 //
 import org.example.configs.HibernateUtils;
+import org.example.entities.Appointment;
 import org.example.entities.Owner;
 import org.example.entities.Veterinarian;
 import org.hibernate.Session;
@@ -25,6 +26,7 @@ public class VeterinarianService {
         veterinarian.setPhoneNumber(phoneNumber);
 
         System.out.println(veterinarian);
+
         Session session = sessionFactory.openSession();
         session.persist(veterinarian);
         session.beginTransaction().commit();
@@ -33,13 +35,11 @@ public class VeterinarianService {
     }
     public void displayAllVeterinarians(){
         Session session = sessionFactory.openSession();
-        Query<Veterinarian> query = session.createQuery("SELECT o FROM Owner o");
+        Query<Veterinarian> query = session.createQuery("SELECT v FROM Veterinarian v");
         List<Veterinarian> veterinarians = query.list();
         for (Veterinarian veterinarian : veterinarians){
             System.out.println(veterinarian);
         }
         session.close();
-        //lista de appointments?
     }
-
 }

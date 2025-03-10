@@ -11,7 +11,7 @@ import java.util.Scanner;
 //
 public class PetService {
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
-    public void registerPet() {
+    public Pet registerPet() {
         Pet pet = new Pet();
         Scanner input = new Scanner(System.in);
 
@@ -36,6 +36,7 @@ public class PetService {
         session.persist(pet);
         session.beginTransaction().commit();
         session.close();
+        return pet;
     }
 
     public void displayAllPets(){

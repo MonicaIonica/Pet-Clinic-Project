@@ -24,7 +24,7 @@ public class Main {
                     "0 - End session.\n" +
                     "1 - Register a pet.\n" +
                     "2 - Display all pets.\n" +
-                    "3 - Register a owner.\n" +
+                    "3 - Register an owner.\n" +
                     "4 - Display all owners.\n" +
                     "5 - Register an appointment.\n" +
                     "6 - Display all appointments.\n" +
@@ -57,7 +57,7 @@ public class Main {
                     break;
                 case 6:
                     try {
-                        appointmentService.displayAllAppointents();
+                        appointmentService.displayAllAppointments();
                     } catch (InvalidMismatchException e) {
                         System.out.println(e.getMessage());
                     }
@@ -69,7 +69,6 @@ public class Main {
         }  while (number != 0) ;
     }
 }
-
 
 
 

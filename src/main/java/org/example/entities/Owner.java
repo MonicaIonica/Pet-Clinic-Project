@@ -35,8 +35,8 @@ public class Owner {
         return adress;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAdress(String address) {
+        this.adress = address;
     }
 
     public Integer getPhoneNumber() {
@@ -60,7 +60,7 @@ public class Owner {
         final StringBuilder sb = new StringBuilder("Owner{");
         sb.append("ownerId=").append(ownerId);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", adress='").append(adress).append('\'');
+        sb.append(", address='").append(adress).append('\'');
         sb.append(", phoneNumber=").append(phoneNumber);
         //sb.append(", petList=").append(petList);
         sb.append('}');

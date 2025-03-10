@@ -20,7 +20,6 @@ public class AppointmentService {
 
     public void registerAppointment() throws InvalidFormatException {
         Appointment appointment = new Appointment();
-        Scanner input = new Scanner(System.in);
 
         System.out.println("Type the date for your appointment in  following format : yyyy-MM-dd:");
         Scanner scanner = new Scanner(System.in);
@@ -35,12 +34,19 @@ public class AppointmentService {
         }
 
         Transaction transaction = null;
+
+        VeterinarianService veterinarianService = new VeterinarianService();
+        appointment.setVeterinarian(veterinarianService.registerVeterinarian());
+
+        PetService petService = new PetService();
+        appointment.setPet(petService.registerPet());
+
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             session.save(appointment);
             transaction.commit();
 
-            System.out.println("Appointment registered successfully: " + appointment);
+            System.out.println("Appointment registered successfully:\n " + appointment);
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -49,8 +55,7 @@ public class AppointmentService {
         }
     }
 
-    public void displayAllAppointents() throws InvalidMismatchException {
-
+    public void displayAllAppointments() throws InvalidMismatchException {
         Session session = sessionFactory.openSession();
         Query<Appointment> query = session.createQuery("SELECT a FROM Appointment a");
         List<Appointment> appointments = query.list();
