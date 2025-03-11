@@ -32,6 +32,7 @@ public class PetService {
 
         OwnerService ownerService = new OwnerService();
         pet.setOwner(ownerService.registerOwner());
+
         Session session = sessionFactory.openSession();
         session.persist(pet);
         session.beginTransaction().commit();

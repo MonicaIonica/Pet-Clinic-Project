@@ -1,5 +1,6 @@
 package org.example.services;
 //
+import org.example.Repository.VeterinarianRepository;
 import org.example.configs.HibernateUtils;
 import org.example.entities.Appointment;
 import org.example.entities.Owner;
@@ -27,10 +28,8 @@ public class VeterinarianService {
 
         System.out.println(veterinarian);
 
-        Session session = sessionFactory.openSession();
-        session.persist(veterinarian);
-        session.beginTransaction().commit();
-        session.close();
+        VeterinarianRepository vetRep = new VeterinarianRepository();
+        vetRep.saveVet(veterinarian);
         return veterinarian;
     }
     public void displayAllVeterinarians(){

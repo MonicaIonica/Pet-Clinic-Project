@@ -1,5 +1,6 @@
 package org.example.services;
 //
+import org.example.Repository.OwnerRepository;
 import org.example.configs.HibernateUtils;
 import org.example.entities.Owner;
 import org.example.entities.Pet;
@@ -34,10 +35,8 @@ public class OwnerService {
         owner.setPhoneNumber(phoneNumber);
 
         System.out.println(owner);
-        Session session = sessionFactory.openSession();
-        session.persist(owner);
-        session.beginTransaction().commit();
-        session.close();
+        OwnerRepository ownerRep = new OwnerRepository();
+        ownerRep.saveOwner(owner);
         return owner;
     }
     public void displayAllOwners(){

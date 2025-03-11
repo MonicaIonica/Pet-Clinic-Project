@@ -1,6 +1,7 @@
 package org.example.services;
 //
 import org.example.Repository.AppointmentRepository;
+import org.example.Repository.PetRepository;
 import org.example.Repository.VeterinarianRepository;
 import org.example.configs.HibernateUtils;
 import org.example.configs.InvalidFormatException;
@@ -43,11 +44,13 @@ public class AppointmentService {
         VeterinarianRepository vetRep = new VeterinarianRepository();
         appointment.setVeterinarian(vetRep.getVetByName(vetName));
 
+        System.out.println("Type the name of the pet:");
+        String petName = scanner.nextLine();
 
 
+        PetRepository petRep = new PetRepository();
 
-        PetService petService = new PetService();
-        appointment.setPet(petService.registerPet());
+        appointment.setPet(petRep.getPetByName(petName));
 
         AppointmentRepository appRep =  new AppointmentRepository();
         appRep.saveAppointment(appointment);
